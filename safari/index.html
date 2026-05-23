@@ -1,0 +1,2084 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"
+        href="favicon/android-chrome-192x192.png">
+        <link rel="icon" type="image/png" sizes="512x512"
+        href="favicon/android-chrome-512x512.png">
+        <link rel="icon" type="image/png" sizes="192x192"
+        href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+  <title>Angelino Adventures Enquiry</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    :root {
+      --gold: #3B3122;
+      --gold-light: #D4AA5C;
+      --gold-pale: #fef4e8;
+      --dark: #000000;
+      --dark2: #000000;
+      --mid: #5a3a22;
+      --text: #000000;
+      --muted: #8a6a4a;
+      --border: #e8ddd0;
+      --bg: #faf6f1;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* FORM PAGE */
+    #form-page {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    .sidebar {
+      /* width: 320px; */
+      flex-shrink: 0;
+      background: var(--dark2);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 36px;
+    }
+
+    .sb-bg {
+      position: absolute;
+      inset: 0;
+      background: url('back.jpg') center/cover no-repeat;
+      opacity: .35;
+    }
+
+    .sb-ov {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        #ffffff 0%,
+        rgba(255, 255, 255, 0.8) 20%,
+        rgba(60, 36, 20, 0.6) 80%,
+        #2a1a0eee 100%);
+    }
+
+    /* .sb-inner { position: relative; z-index: 1; } */
+    .sb-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+
+    .sb-logo {
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 36px;
+      font-weight: 500;
+    }
+
+    .sb-logo img {
+      width: 250px;
+      height: auto;
+
+    }
+
+    .sb-logo2 {
+    font-size: 12px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    margin-bottom: 36px;
+    margin-top: 36px;
+    font-weight: 500;
+    justify-content: center;
+    align-items: center;
+    display: flex
+;
+}
+
+    .sb-logo2 img {
+      width: 250px;
+      height: auto;
+
+    }
+
+    .sb-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .sb-title em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .sb-sub {
+      font-size: 13px;
+      color: #ffffff;
+      line-height: 1.7;
+      margin-bottom: 36px;
+    }
+
+    .sb-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .sstep {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: .38;
+      transition: opacity .3s;
+    }
+
+    .sstep.on,
+    .sstep.done {
+      opacity: 1;
+    }
+
+    .sdot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex-shrink: 0;
+      transition: all .3s;
+    }
+
+    .sstep.done .sdot {
+      background: var(--gold);
+    }
+
+    .sstep.on .sdot {
+      background: var(--gold-light);
+      box-shadow: 0 0 8px rgba(241, 146, 51, .7);
+    }
+
+    .slbl {
+      font-size: 12px;
+      color: #ffffff;
+      letter-spacing: .04em;
+    }
+
+    .sstep.on .slbl {
+      color: var(--white);
+    }
+
+    .form-area {
+      flex: 1;
+      padding: 48px 52px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      background: var(--white);
+    }
+
+    .prog-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .prog-bg {
+      height: 3px;
+      background: var(--border);
+      border-radius: 2px;
+      margin-bottom: 44px;
+    }
+
+    .prog-fill {
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: width .4s ease;
+    }
+
+    .step {
+      display: none;
+      animation: fin .35s ease forwards;
+    }
+
+    .step.active {
+      display: block;
+    }
+
+    @keyframes fin {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 30px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 26px;
+      line-height: 1.2;
+    }
+
+    /* Step 1 hint */
+    .s1-hint {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    /* Country accordion list */
+    .country-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .country-row {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--white);
+      transition: border-color .2s;
+    }
+
+    .country-row.has-sel {
+      border-color: var(--gold);
+    }
+
+    .country-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: background .15s;
+    }
+
+    .country-header:hover {
+      background: var(--gold-pale);
+    }
+
+    .ch-flag {
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+
+    .ch-info {
+      flex: 1;
+    }
+
+    .ch-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .ch-count {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    .ch-count.active {
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    .ch-toggle {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--muted);
+      transition: all .2s;
+      flex-shrink: 0;
+    }
+
+    .country-row.has-sel .ch-toggle {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+      color: var(--gold);
+    }
+
+    .ch-arrow {
+      font-size: 10px;
+      color: var(--muted);
+      transition: transform .25s;
+      flex-shrink: 0;
+      margin-left: 2px;
+    }
+
+    .country-row.open .ch-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* Area dropdown panel */
+    .country-areas {
+      display: none;
+      padding: 0 14px 14px;
+      border-top: 1px solid var(--border);
+      animation: fin .2s ease forwards;
+    }
+
+    .country-row.open .country-areas {
+      display: block;
+    }
+
+    .ca-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 10px 0 8px;
+    }
+
+    .area-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .area-pill {
+      padding: 6px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      cursor: pointer;
+      background: var(--white);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+      transition: all .18s;
+      white-space: nowrap;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .area-pill:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-pale);
+    }
+
+    .area-pill.sel {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* Special options (I haven't decided) */
+    .special-opts {
+      margin-bottom: 14px;
+    }
+
+    .sopt {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1.5px dashed var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      background: var(--white);
+      transition: all .2s;
+    }
+
+    .sopt:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-pale);
+    }
+
+    .sopt.sel {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+    }
+
+    .sopt-icon {
+      font-size: 18px;
+    }
+
+    .sopt-txt {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .sopt-check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1.5px solid var(--border);
+      background: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: transparent;
+      transition: all .2s;
+    }
+
+    .sopt.sel .sopt-check {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--white);
+    }
+
+    /* Selection summary */
+    .sel-summary {
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-light);
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 4px;
+    }
+
+    .ss-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+
+    .ss-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .ss-tag {
+      font-size: 11px;
+      font-weight: 500;
+      background: var(--white);
+      border: 1px solid var(--gold-light);
+      border-radius: 999px;
+      padding: 4px 10px;
+      color: var(--dark);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .ss-tag-x {
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1;
+      transition: color .15s;
+    }
+
+    .ss-tag-x:hover {
+      color: var(--gold);
+    }
+
+    /* Destination grid - keep for potential fallback */
+    .dest-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    /* Date pills */
+    .dpills {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 18px;
+      align-items: center;
+    }
+
+    .dpill {
+      flex: 1;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 11px 14px;
+      background: var(--white);
+      transition: border-color .2s;
+    }
+
+    .dpill.on {
+      border-color: var(--gold);
+    }
+
+    .dp-lbl {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 3px;
+    }
+
+    .dp-val {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .dp-val.ph {
+      color: #bbb;
+      font-weight: 400;
+    }
+
+    .darr {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .npill {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--gold);
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-light);
+      border-radius: 999px;
+      padding: 4px 12px;
+      white-space: nowrap;
+    }
+
+    /* Calendar */
+    .cal-box {
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+
+    .cal-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .cnav {
+      width: 30px;
+      height: 30px;
+      border: 1.5px solid var(--border);
+      border-radius: 6px;
+      background: var(--white);
+      cursor: pointer;
+      font-size: 16px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color .2s;
+    }
+
+    .cnav:hover {
+      border-color: var(--gold);
+    }
+
+    .cmo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--dark);
+    }
+
+    .cg7 {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      text-align: center;
+    }
+
+    .cdn {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      color: var(--muted);
+      padding: 4px 0;
+    }
+
+    .cd {
+      padding: 7px 2px;
+      font-size: 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: var(--text);
+      transition: background .12s;
+    }
+
+    .cd:hover:not(.dis):not(.emp) {
+      background: var(--gold-pale);
+    }
+
+    .cd.dis {
+      color: #ccc;
+      cursor: default;
+    }
+
+    .cd.emp {
+      cursor: default;
+    }
+
+    .cd.tod {
+      font-weight: 500;
+      color: var(--gold);
+    }
+
+    .cd.sd,
+    .cd.ed {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .cd.inr {
+      background: var(--gold-pale);
+      color: var(--mid);
+      border-radius: 0;
+    }
+
+    .cd.re {
+      border-radius: 5px 0 0 5px;
+    }
+
+    .cd.le {
+      border-radius: 0 5px 5px 0;
+    }
+
+    .cal-hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .cal-hint strong {
+      color: var(--gold);
+    }
+
+    /* Inputs */
+    .fld {
+      margin-bottom: 16px;
+    }
+
+    .fld label {
+      display: block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+    }
+
+    .fld input,
+    .fld select,
+    .fld textarea {
+      width: 100%;
+      padding: 10px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 14px;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--white);
+      color: var(--text);
+      transition: border-color .2s;
+    }
+
+    .fld input:focus,
+    .fld select:focus,
+    .fld textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(241, 146, 51, .1);
+    }
+
+    .g2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    /* Contact cards */
+    .cgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .cc {
+      padding: 13px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      background: var(--white);
+      transition: all .2s;
+    }
+
+    .cc:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-pale);
+    }
+
+    .cc.sel {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+      box-shadow: 0 0 0 3px rgba(241, 146, 51, .12);
+    }
+
+    .cc-icon {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .cc-lbl {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .cc-sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid var(--border);
+    }
+
+    .bbk {
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--muted);
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .bbk:hover {
+      border-color: var(--gold);
+      color: var(--text);
+    }
+
+    .bnt {
+      background: var(--gold);
+      color: var(--white);
+      padding: 10px 26px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      margin-left: auto;
+      letter-spacing: .04em;
+      transition: background .2s;
+    }
+
+    .bnt:hover {
+      background: #d97d1e;
+    }
+
+    .bsb {
+      background: var(--dark);
+      color: var(--white);
+      padding: 10px 26px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      letter-spacing: .04em;
+      transition: background .2s;
+    }
+
+    .bsb:hover {
+      background: var(--mid);
+    }
+
+    .bsb:disabled {
+      opacity: .55;
+      cursor: not-allowed;
+    }
+
+    .smsg {
+      font-size: 12px;
+      color: var(--gold);
+      margin-top: 8px;
+      min-height: 16px;
+    }
+
+    /* THANK YOU PAGE */
+    #ty-page {
+      display: none;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    .ty-bg {
+      position: fixed;
+      inset: 0;
+      background: url('GreatMigration.jpeg') center/cover no-repeat;
+    }
+
+    .ty-ov {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(60, 36, 20, .92) 0%, rgba(60, 36, 20, .65) 100%);
+    }
+
+    .ty-wrap {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .ty-card {
+      background: rgba(255, 255, 255, .06);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(241, 146, 51, .3);
+      border-radius: 16px;
+      padding: 52px 48px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .ty-logo-txt {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 32px;
+      font-weight: 500;
+    }
+
+    .ty-check {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      border: 1px solid rgba(241, 146, 51, .5);
+      background: rgba(241, 146, 51, .15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 26px;
+      color: var(--gold-light);
+    }
+
+    .ty-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 42px;
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 6px;
+    }
+
+    .ty-title em {
+      color: var(--gold-light);
+      font-style: italic;
+    }
+
+    .ty-sub {
+      font-size: 13px;
+      color: #c0b0a0;
+      line-height: 1.85;
+      margin-bottom: 32px;
+    }
+
+    .ty-sub strong {
+      color: var(--gold-light);
+    }
+
+    .ty-table {
+      background: rgba(0, 0, 0, .22);
+      border: 1px solid rgba(255, 255, 255, .07);
+      border-radius: 10px;
+      padding: 18px 22px;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .ty-tr {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .05);
+    }
+
+    .ty-tr:last-child {
+      border-bottom: none;
+    }
+
+    .ty-k {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #6a5848;
+    }
+
+    .ty-v {
+      font-size: 13px;
+      font-weight: 500;
+      color: #ddd6c8;
+    }
+
+    .ty-btns {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-visit {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      padding: 13px 40px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: .06em;
+      transition: background .2s;
+    }
+
+    .btn-visit:hover {
+      background: #d97d1e;
+    }
+
+    .btn-again {
+      background: transparent;
+      color: #8a7868;
+      font-size: 12px;
+      font-family: 'Montserrat', sans-serif;
+      cursor: pointer;
+      border: none;
+      letter-spacing: .04em;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .btn-again:hover {
+      color: #e8e0d0;
+    }
+
+    /* Hotel level cards */
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hc {
+      padding: 14px 14px 12px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      background: var(--white);
+      transition: all .2s;
+    }
+
+    .hc:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-pale);
+    }
+
+    .hc.sel {
+      border-color: var(--gold);
+      background: var(--gold-pale);
+      box-shadow: 0 0 0 3px rgba(241, 146, 51, .12);
+    }
+
+    .hc-icon {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .hc-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .hc-desc {
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.4;
+    }
+
+    .hc.sel .hc-name {
+      color: var(--dark);
+    }
+
+    /* T&C checkbox */
+    .tc-wrap {
+      margin-bottom: 6px;
+      margin-top: 4px;
+    }
+
+    .tc-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .tc-label input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .tc-box {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--border);
+      border-radius: 4px;
+      background: var(--white);
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all .2s;
+    }
+
+    .tc-label input[type="checkbox"]:checked~.tc-box {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .tc-label input[type="checkbox"]:checked~.tc-box::after {
+      content: '';
+      display: block;
+      width: 5px;
+      height: 9px;
+      border: 2px solid #fff;
+      border-top: none;
+      border-left: none;
+      transform: rotate(45deg) translateY(-1px);
+    }
+
+    .tc-text {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    .tc-link {
+      color: var(--gold);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      transition: color .2s;
+    }
+
+    .tc-link:hover {
+      color: #d97d1e;
+    }
+
+    /* Best time panel */
+    .or-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 20px 0;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .or-divider::before,
+    .or-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .btn-besttime {
+      width: 100%;
+      padding: 13px 20px;
+      border: 1.5px dashed var(--gold-light);
+      border-radius: 10px;
+      background: var(--gold-pale);
+      color: var(--gold);
+      font-size: 13px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: all .2s;
+      letter-spacing: .02em;
+    }
+
+    .btn-besttime:hover {
+      border-color: var(--gold);
+      background: #fde8cc;
+    }
+
+    .btn-besttime.active {
+      border-style: solid;
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .besttime-panel {
+      display: none;
+      margin-top: 16px;
+      animation: fin .3s ease forwards;
+    }
+
+    .besttime-panel.visible {
+      display: block;
+    }
+
+    .bt-intro {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .bt-intro strong {
+      color: var(--dark);
+    }
+
+    .bt-months {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .bt-month {
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 8px;
+      text-align: center;
+      cursor: pointer;
+      background: var(--white);
+      transition: all .2s;
+      position: relative;
+    }
+
+    .bt-month:hover {
+      border-color: var(--gold-light);
+      background: var(--gold-pale);
+    }
+
+    .bt-month.sel {
+      border-color: var(--gold);
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    .bt-month.peak::after {
+      content: '★';
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      font-size: 8px;
+      color: var(--gold-light);
+    }
+
+    .bt-month.sel.peak::after {
+      color: rgba(255, 255, 255, .7);
+    }
+
+    .bt-mname {
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .bt-tag {
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--muted);
+      opacity: .8;
+    }
+
+    .bt-month.sel .bt-tag {
+      color: rgba(255, 255, 255, .75);
+    }
+
+    .bt-legend {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+      font-size: 11px;
+      color: var(--muted);
+      align-items: center;
+    }
+
+    .bt-legend span {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .bt-sel-summary {
+      font-size: 12px;
+      color: var(--dark);
+      background: var(--gold-pale);
+      border: 1px solid var(--gold-light);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: none;
+      line-height: 1.6;
+    }
+
+    .bt-sel-summary.show {
+      display: block;
+    }
+
+    @media(max-width:800px) {
+      #form-page {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        padding: 28px 22px;
+      }
+
+      .sb-steps {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 14px;
+        visibility: hidden;
+        display: none;
+      }
+
+      .form-area {
+        padding: 28px 20px;
+      }
+
+      .ty-card {
+        padding: 36px 22px;
+      }
+
+      .ty-title {
+        font-size: 32px;
+      }
+
+      .bt-months {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .hotel-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ══ FORM PAGE ══ -->
+  <div id="form-page">
+    <div class="sidebar">
+      <div class="sb-bg"></div>
+      <div class="sb-ov"></div>
+      <div class="sb-inner">
+        <div class="sb-logo">
+          <img src="logo.png" alt="">
+        </div>
+        <div class="sb-title">The Best<br><em>Vacations Awaits</em></div>
+        <div class="sb-sub">Tell Angelino your plan and he'll craft an unforgettable vacation for you</div>
+        <div class="sb-steps" id="sb-steps">
+          <div class="sstep on" data-n="1">
+            <div class="sdot"></div><span class="slbl">Destination</span>
+          </div>
+          <div class="sstep" data-n="2">
+            <div class="sdot"></div><span class="slbl">Travel dates</span>
+          </div>
+          <div class="sstep" data-n="3">
+            <div class="sdot"></div><span class="slbl">Travelers</span>
+          </div>
+          <div class="sstep" data-n="4">
+            <div class="sdot"></div><span class="slbl">Your details</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-area">
+      <div class="prog-row"><span id="stxt">Step 1 of 4</span><span id="ptxt">25%</span></div>
+      <div class="prog-bg">
+        <div class="prog-fill" id="prog" style="width:25%"></div>
+      </div>
+
+      <!-- S1 -->
+      <div class="step active" id="s1">
+        <div class="eyebrow">Step 1</div>
+        <h2>Where would you<br>like to go?</h2>
+        <p class="s1-hint">Select one or more countries, then expand each to choose specific areas.</p>
+        <div class="country-list" id="country-list"></div>
+        <div class="special-opts">
+          <div class="sopt" data-val="I have not decided yet" onclick="toggleSpecial(this)">
+            <span class="sopt-icon"></span>
+            <span class="sopt-txt">I have not decided yet</span>
+            <span class="sopt-check">&#10003;</span>
+          </div>
+        </div>
+        <div class="sel-summary" id="sel-summary" style="display:none">
+          <div class="ss-label">Your selection</div>
+          <div class="ss-tags" id="ss-tags"></div>
+        </div>
+        <div class="btn-row"><button class="bnt" onclick="go(1,2)">Next step &#8594;</button></div>
+      </div>
+
+      <!-- S2 -->
+      <div class="step" id="s2">
+        <div class="eyebrow">Step 2</div>
+        <h2>When are you<br>traveling?</h2>
+        <div class="dpills" id="date-pills-row">
+          <div class="dpill" id="ps">
+            <div class="dp-lbl">Arrival</div>
+            <div class="dp-val ph" id="psv">Select date</div>
+          </div>
+          <span class="darr">&#8594;</span>
+          <div class="dpill" id="pe">
+            <div class="dp-lbl">Departure</div>
+            <div class="dp-val ph" id="pev">Select date</div>
+          </div>
+          <div class="npill" id="np" style="display:none"></div>
+        </div>
+        <div id="cal-section">
+          <div class="cal-box">
+            <div class="cal-head">
+              <button class="cnav" id="cprev">&#8249;</button>
+              <span class="cmo" id="cmo"></span>
+              <button class="cnav" id="cnext">&#8250;</button>
+            </div>
+            <div class="cg7" id="cdnms"></div>
+            <div class="cg7" id="cdays"></div>
+          </div>
+          <p class="cal-hint" id="chint">Click to select your <strong>arrival date</strong></p>
+        </div>
+        <div class="or-divider">or</div>
+        <button class="btn-besttime" id="btn-besttime" onclick="toggleBestTime()">
+          <span id="bt-btn-icon">&#128197;</span>
+          <span id="bt-btn-txt">Tell me when is the best time to travel</span>
+        </button>
+        <div class="besttime-panel" id="besttime-panel">
+          <p class="bt-intro" style="margin-top:16px;">Pick the <strong>month(s)</strong> that roughly suit you &mdash;
+            our team will recommend the ideal window based on wildlife seasons, weather, and your destination.</p>
+          <div class="bt-legend"><span>&#9733; Peak season</span><span style="opacity:.6">No star = shoulder / green
+              season</span></div>
+          <div class="bt-months" id="bt-months"></div>
+          <div class="bt-sel-summary" id="bt-summary"></div>
+        </div>
+        <div class="btn-row">
+          <button class="bbk" onclick="go(2,1)">&#8592; Back</button>
+          <button class="bnt" onclick="go(2,3)">Next step &#8594;</button>
+        </div>
+      </div>
+
+      <!-- S3 -->
+      <div class="step" id="s3">
+        <div class="eyebrow">Step 3</div>
+        <h2>Who is<br>traveling?</h2>
+        <div class="g2">
+          <div class="fld"><label>Adults</label><input type="number" id="adults" min="1" value="2"></div>
+          <div class="fld"><label>Children (under 12)</label><input type="number" id="children" min="0" value="0"></div>
+        </div>
+        <div class="fld"><label>Price Range per person (USD)</label>
+          <select id="budget">
+            <option value="">Select Price Range...</option>
+            <option>$500 – $3,000 (Budget)</option>
+            <option>$3,000 – $5,000 (Comfort)</option>
+            <option>$5,000 – $10,000 (Luxury)</option>
+          </select>
+        </div>
+
+        <div class="fld" style="margin-bottom:10px;"><label>Hotel / Camp level</label></div>
+        <div class="hotel-grid" id="hotel-grid">
+          <div class="hc" data-val="Budget" onclick="selHotel(this)">
+            <div class="hc-icon">🏕️</div>
+            <div class="hc-name">Budget</div>
+            <div class="hc-desc">Tented camps &amp; simple lodges</div>
+          </div>
+          <div class="hc" data-val="Comfort" onclick="selHotel(this)">
+            <div class="hc-icon">🏨</div>
+            <div class="hc-name">Comfort</div>
+            <div class="hc-desc">Comfortable mid-range lodges</div>
+          </div>
+          <div class="hc" data-val="Luxury" onclick="selHotel(this)">
+            <div class="hc-icon">✨</div>
+            <div class="hc-name">Luxury</div>
+            <div class="hc-desc">Premium camps &amp; lodges</div>
+          </div>
+        </div>
+
+        <div class="tc-wrap">
+          <label class="tc-label">
+            <input type="checkbox" id="tc-check">
+            <span class="tc-box"></span>
+            <span class="tc-text">I have read and agree to the
+              <a href="" target="_blank"
+                rel="noopener" class="tc-link">Terms &amp; Conditions</a>
+            </span>
+          </label>
+        </div>
+
+        <div class="btn-row">
+          <button class="bbk" onclick="go(3,2)">&#8592; Back</button>
+          <button class="bnt" onclick="go(3,4)">Next step &#8594;</button>
+        </div>
+      </div>
+
+      <!-- S4 -->
+      <div class="step" id="s4">
+        <div class="eyebrow">Step 4</div>
+        <h2>Your details</h2>
+        <div class="g2">
+          <div class="fld"><label>Full name</label><input type="text" id="fname" placeholder="John Doe"></div>
+          <div class="fld"><label>Email address</label><input type="email" id="femail" placeholder="john@example.com">
+          </div>
+        </div>
+        <div class="fld" style="margin-bottom:10px;"><label>How should we contact you?</label></div>
+        <div class="cgrid">
+          <div class="cc" data-val="Email" onclick="selC('Email')">
+            <div class="cc-icon"></div>
+            <div class="cc-lbl">Email</div>
+            <div class="cc-sub">Reply within 24h</div>
+          </div>
+          <div class="cc" data-val="WhatsApp" onclick="selC('WhatsApp')">
+            <div class="cc-icon"></div>
+            <div class="cc-lbl">WhatsApp</div>
+            <div class="cc-sub">Quick chat</div>
+          </div>
+          <div class="cc" data-val="Phone call" onclick="selC('Phone call')">
+            <div class="cc-icon"></div>
+            <div class="cc-lbl">Phone call</div>
+            <div class="cc-sub">We'll call you</div>
+          </div>
+          <div class="cc" data-val="Video call" onclick="selC('Video call')">
+            <div class="cc-icon"></div>
+            <div class="cc-lbl">Video call</div>
+            <div class="cc-sub">Zoom / Meet</div>
+          </div>
+        </div>
+        <div id="cextra" style="display:none">
+          <div class="fld"><label id="cxlbl">Phone number</label><input type="text" id="cxval"
+              placeholder="+255 700 000 000"></div>
+        </div>
+        <div class="fld"><label>Anything else we should know?</label>
+          <textarea id="fmsg" rows="3"
+            placeholder="Special occasions, dietary needs, accessibility requirements..."></textarea>
+        </div>
+        <div class="btn-row">
+          <button class="bbk" onclick="go(4,3)">← Back</button>
+          <button class="bsb" id="sbtn" onclick="doSubmit()">Submit enquiry</button>
+        </div>
+        <div class="smsg" id="smsg"></div>
+      </div>
+
+      <!-- <div class="sb-logo2">
+          <img src="logo.png" alt="">
+        </div> -->
+    </div>
+    
+    
+  </div>
+
+  <!-- ══ THANK YOU PAGE ══ -->
+  <div id="ty-page">
+    <div class="ty-bg"></div>
+    <div class="ty-ov"></div>
+    <div class="ty-wrap">
+      <div class="ty-card">
+        <div class="ty-logo-txt">Safari ASAP — Reservations</div>
+        <div class="ty-check">✓</div>
+        <div class="ty-title">Thank you,<br><em id="ty-fn"></em></div>
+        <p class="ty-sub">Your enquiry has been received and sent to our reservations team.<br>We'll be in touch via
+          <strong id="ty-cm"></strong> — typically within 24 hours.</p>
+        <div class="ty-table" id="ty-tbl"></div>
+        <div class="ty-btns">
+          <a href="" target="_blank" class="btn-visit">Visit safariasap.com</a>
+          <button class="btn-again" onclick="resetAll()">Submit another enquiry</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    emailjs.init('SY4IOxJ3YGa3pOifT');
+    const EJ_SERVICE = 'service_n7s0k6z';
+    const EJ_TEMPLATE = 'template_2uec7xh';
+
+    // ── COUNTRY & AREA DATA ─────────────────────────────
+    const COUNTRIES = [
+      {
+        name: 'Tanzania', flag: '🇹🇿', areas: [
+          'Serengeti National Park', 'Ngorongoro Crater', 'Tarangire National Park',
+          'Lake Manyara National Park','Mt.Kilimanjaro',
+           'Arusha National Park', 'Mkomazi National Park', 
+          'Mikumi National Park', 'Zanzibar', 'Mt.Meru'
+        ]
+      },
+      {
+        name: 'Kenya', flag: '🇰🇪', areas: [
+          'Maasai Mara', 'Amboseli National Park', 'Tsavo East NP', 'Tsavo West NP',
+          'Samburu National Reserve', 'Lake Nakuru NP', 'Aberdare National Park',
+          'Mount Kenya NP', 'Ol Pejeta Conservancy', 'Laikipia Plateau', 'Diani Beach'
+        ]
+      },
+      // {
+      //   name: 'Uganda', flag: '🇺🇬', areas: [
+      //     'Bwindi Impenetrable NP', 'Mgahinga Gorilla NP', 'Queen Elizabeth NP',
+      //     'Murchison Falls NP', 'Kibale National Park', 'Kidepo Valley NP',
+      //     'Lake Mburo NP', 'Rwenzori Mountains NP', 'Mount Elgon NP',
+      //     'Semuliki National Park', 'Ziwa Rhino Sanctuary'
+      //   ]
+      // },
+      // {
+      //   name: 'Botswana', flag: '🇧🇼', areas: [
+      //     'Okavango Delta', 'Chobe National Park', 'Moremi Game Reserve',
+      //     'Central Kalahari GR', 'Makgadikgadi Pans', 'Nxai Pan NP',
+      //     'Savuti', 'Linyanti Marshes'
+      //   ]
+      // },
+      // {
+      //   name: 'Rwanda', flag: '🇷🇼', areas: [
+      //     'Volcanoes National Park', 'Nyungwe Forest NP', 'Akagera National Park',
+      //     'Lake Kivu', 'Gishwati-Mukura NP'
+      //   ]
+      // },
+      // {
+      //   name: 'Zambia', flag: '🇿🇲', areas: [
+      //     'South Luangwa NP', 'North Luangwa NP', 'Lower Zambezi NP',
+      //     'Kafue National Park', 'Victoria Falls (Zambia)', 'Liuwa Plain NP',
+      //     'Bangweulu Wetlands'
+      //   ]
+      // },
+      // {
+      //   name: 'Zimbabwe', flag: '🇿🇼', areas: [
+      //     'Hwange National Park', 'Victoria Falls (Zimbabwe)', 'Mana Pools NP',
+      //     'Matobo National Park', 'Gonarezhou NP', 'Kariba'
+      //   ]
+      // }
+    ];
+
+    // State: { countryName: Set of selected areas }
+    const destState = {};
+    let specialSel = false;
+
+    function buildCountryList() {
+      const list = document.getElementById('country-list');
+      list.innerHTML = '';
+      COUNTRIES.forEach(c => {
+        destState[c.name] = new Set();
+        const row = document.createElement('div');
+        row.className = 'country-row';
+        row.dataset.country = c.name;
+        row.innerHTML =
+          '<div class="country-header" onclick="toggleCountry(this.parentElement)">' +
+          '<span class="ch-flag">' + c.flag + '</span>' +
+          '<div class="ch-info">' +
+          '<div class="ch-name">' + c.name + '</div>' +
+          '<div class="ch-count" id="cc-' + c.name + '">Tap to select areas</div>' +
+          '</div>' +
+          '<div class="ch-toggle" id="ct-' + c.name + '">+</div>' +
+          '<span class="ch-arrow">&#9660;</span>' +
+          '</div>' +
+          '<div class="country-areas">' +
+          '<div class="ca-title">Select area(s) in ' + c.name + '</div>' +
+          '<div class="area-pills" id="ap-' + c.name + '"></div>' +
+          '</div>';
+        list.appendChild(row);
+
+        // Build area pills
+        const pillsWrap = row.querySelector('#ap-' + c.name);
+        c.areas.forEach(area => {
+          const pill = document.createElement('div');
+          pill.className = 'area-pill';
+          pill.textContent = area;
+          pill.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const set = destState[c.name];
+            if (set.has(area)) set.delete(area); else set.add(area);
+            pill.classList.toggle('sel', set.has(area));
+            // deselect special if any country gets areas
+            if (set.size > 0 && specialSel) { specialSel = false; document.querySelector('.sopt').classList.remove('sel'); }
+            updateCountryRow(c.name);
+            updateSummary();
+          });
+          pillsWrap.appendChild(pill);
+        });
+      });
+    }
+
+    function toggleCountry(row) {
+      row.classList.toggle('open');
+    }
+
+    function updateCountryRow(name) {
+      const set = destState[name];
+      const row = document.querySelector('.country-row[data-country="' + name + '"]');
+      const countEl = document.getElementById('cc-' + name);
+      const toggleEl = document.getElementById('ct-' + name);
+      if (set.size === 0) {
+        row.classList.remove('has-sel');
+        countEl.textContent = 'Tap to select areas';
+        countEl.classList.remove('active');
+        toggleEl.textContent = '+';
+      } else {
+        row.classList.add('has-sel');
+        countEl.textContent = set.size + ' area' + (set.size > 1 ? 's' : '') + ' selected';
+        countEl.classList.add('active');
+        toggleEl.textContent = set.size;
+      }
+    }
+
+    function toggleSpecial(el) {
+      // Clear all country selections first
+      COUNTRIES.forEach(c => {
+        destState[c.name].clear();
+        updateCountryRow(c.name);
+        document.querySelectorAll('#ap-' + c.name + ' .area-pill').forEach(p => p.classList.remove('sel'));
+      });
+      specialSel = !el.classList.contains('sel');
+      el.classList.toggle('sel', specialSel);
+      updateSummary();
+    }
+
+    function updateSummary() {
+      const summary = document.getElementById('sel-summary');
+      const tags = document.getElementById('ss-tags');
+      tags.innerHTML = '';
+      let hasAny = false;
+
+      if (specialSel) {
+        hasAny = true;
+        const tag = document.createElement('div');
+        tag.className = 'ss-tag';
+        tag.innerHTML = 'I have not decided yet <span class="ss-tag-x" onclick="toggleSpecial(document.querySelector(\'.sopt\'))">&#215;</span>';
+        tags.appendChild(tag);
+      } else {
+        COUNTRIES.forEach(c => {
+          const set = destState[c.name];
+          if (set.size > 0) {
+            hasAny = true;
+            set.forEach(area => {
+              const tag = document.createElement('div');
+              tag.className = 'ss-tag';
+              tag.innerHTML = c.flag + ' ' + area + ' <span class="ss-tag-x" data-c="' + c.name + '" data-a="' + area + '">&#215;</span>';
+              tag.querySelector('.ss-tag-x').addEventListener('click', () => removeArea(c.name, area));
+              tags.appendChild(tag);
+            });
+          }
+        });
+      }
+
+      summary.style.display = hasAny ? 'block' : 'none';
+    }
+
+    function removeArea(country, area) {
+      destState[country].delete(area);
+      const pill = [...document.querySelectorAll('#ap-' + country + ' .area-pill')].find(p => p.textContent === area);
+      if (pill) pill.classList.remove('sel');
+      updateCountryRow(country);
+      updateSummary();
+    }
+
+    function getDestinationString() {
+      if (specialSel) return 'I have not decided yet';
+      const parts = [];
+      COUNTRIES.forEach(c => {
+        const set = destState[c.name];
+        if (set.size > 0) {
+          parts.push(c.name + ': ' + [...set].join(', '));
+        }
+      });
+      return parts.length > 0 ? parts.join(' | ') : 'Not specified';
+    }
+
+    buildCountryList();
+    // ─────────────────────────────────────────────────
+
+    const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const DNS2 = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+    let calD = new Date(); calD.setDate(1);
+    let sd = null, ed = null, picking = false, cMethod = '';
+
+    function upProg(n) {
+      document.getElementById('prog').style.width = (n / 4 * 100) + '%';
+      document.getElementById('stxt').textContent = 'Step ' + n + ' of 4';
+      document.getElementById('ptxt').textContent = Math.round(n / 4 * 100) + '%';
+      document.querySelectorAll('.sstep').forEach(el => {
+        const sn = +el.dataset.n;
+        el.classList.toggle('done', sn < n);
+        el.classList.toggle('on', sn === n);
+        if (sn > n) { el.classList.remove('done', 'on'); }
+      });
+    }
+
+    function selHotel(el) {
+      document.querySelectorAll('.hc').forEach(c => c.classList.remove('sel'));
+      el.classList.add('sel');
+    }
+
+    function go(a, b) {
+      // Validate step 3 before proceeding to step 4
+      if (a === 3 && b === 4) {
+        if (!document.getElementById('tc-check').checked) {
+          alert('Please agree to the Terms & Conditions to continue.');
+          return;
+        }
+      }
+      document.getElementById('s' + a).classList.remove('active');
+      document.getElementById('s' + b).classList.add('active');
+      upProg(b);
+      if (b === 2) renderCal();
+    }
+
+    function dfmt(d) { return d ? d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '—'; }
+    function nts(a, b) { return Math.round((b - a) / 86400000); }
+
+    function upPills() {
+      const sv = document.getElementById('psv'), ev = document.getElementById('pev'), np = document.getElementById('np');
+      if (sd) { sv.textContent = dfmt(sd); sv.classList.remove('ph'); document.getElementById('ps').classList.add('on'); }
+      else { sv.textContent = 'Select date'; sv.classList.add('ph'); document.getElementById('ps').classList.remove('on'); }
+      if (ed) {
+        ev.textContent = dfmt(ed); ev.classList.remove('ph'); document.getElementById('pe').classList.add('on');
+        const n = nts(sd, ed); np.textContent = n + ' night' + (n !== 1 ? 's' : ''); np.style.display = 'inline-block';
+      } else { ev.textContent = 'Select date'; ev.classList.add('ph'); document.getElementById('pe').classList.remove('on'); np.style.display = 'none'; }
+    }
+
+    function renderCal() {
+      document.getElementById('cmo').textContent = MONTHS[calD.getMonth()] + ' ' + calD.getFullYear();
+      document.getElementById('cdnms').innerHTML = DNS2.map(d => `<div class="cdn">${d}</div>`).join('');
+      const fd = new Date(calD.getFullYear(), calD.getMonth(), 1).getDay();
+      const dim = new Date(calD.getFullYear(), calD.getMonth() + 1, 0).getDate();
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      let h = '';
+      for (let i = 0; i < fd; i++) h += '<div class="cd emp"></div>';
+      for (let d = 1; d <= dim; d++) {
+        const dt = new Date(calD.getFullYear(), calD.getMonth(), d);
+        if (dt < today) { h += `<div class="cd dis">${d}</div>`; continue; }
+        let c = 'cd';
+        const iS = sd && dt.toDateString() === sd.toDateString();
+        const iE = ed && dt.toDateString() === ed.toDateString();
+        const iI = sd && ed && dt > sd && dt < ed;
+        const iT = dt.toDateString() === today.toDateString();
+        if (iS) c += ' sd re';
+        else if (iE) c += ' ed le';
+        else if (iI) c += ' inr';
+        else if (iT) c += ' tod';
+        h += `<div class="${c}" data-ts="${dt.getTime()}">${d}</div>`;
+      }
+      document.getElementById('cdays').innerHTML = h;
+      document.getElementById('cdays').querySelectorAll('.cd:not(.dis):not(.emp)').forEach(el => {
+        el.addEventListener('click', () => {
+          const dt = new Date(+el.dataset.ts);
+          if (!picking) { sd = dt; ed = null; picking = true; document.getElementById('chint').innerHTML = 'Now click your <strong>departure date</strong>'; }
+          else {
+            if (dt <= sd) { sd = dt; ed = null; document.getElementById('chint').innerHTML = 'Now click your <strong>departure date</strong>'; }
+            else { ed = dt; picking = false; document.getElementById('chint').innerHTML = 'Dates set — adjust or continue below'; }
+          }
+          upPills(); renderCal();
+        });
+      });
+    }
+
+    document.getElementById('cprev').addEventListener('click', () => { calD.setMonth(calD.getMonth() - 1); renderCal(); });
+    document.getElementById('cnext').addEventListener('click', () => { calD.setMonth(calD.getMonth() + 1); renderCal(); });
+
+    function selC(v) {
+      document.querySelectorAll('.cc').forEach(c => c.classList.remove('sel'));
+      document.querySelector(`.cc[data-val="${v}"]`).classList.add('sel');
+      cMethod = v;
+      const ex = document.getElementById('cextra'), lbl = document.getElementById('cxlbl');
+      if (v === 'Phone call') { ex.style.display = 'block'; lbl.textContent = 'Phone number'; }
+      else if (v === 'WhatsApp') { ex.style.display = 'block'; lbl.textContent = 'WhatsApp number'; }
+      else if (v === 'Video call') { ex.style.display = 'block'; lbl.textContent = 'Preferred platform (Zoom, Meet…)'; }
+      else ex.style.display = 'none';
+    }
+
+    // ── Best time to travel ──────────────────────────
+    const BT_MONTHS = [
+      { name: 'Jan', tag: 'Dry & warm', peak: false },
+      { name: 'Feb', tag: 'Peak wildlife', peak: true },
+      { name: 'Mar', tag: 'Green season', peak: false },
+      { name: 'Apr', tag: 'Long rains', peak: false },
+      { name: 'May', tag: 'Long rains', peak: false },
+      { name: 'Jun', tag: 'Peak season', peak: true },
+      { name: 'Jul', tag: 'Great Migration', peak: true },
+      { name: 'Aug', tag: 'Great Migration', peak: true },
+      { name: 'Sep', tag: 'Peak season', peak: true },
+      { name: 'Oct', tag: 'Short rains', peak: false },
+      { name: 'Nov', tag: 'Short rains', peak: false },
+      { name: 'Dec', tag: 'Festive season', peak: true },
+    ];
+    let btActive = false;
+    let btSelected = new Set();
+
+    function buildBtMonths() {
+      const grid = document.getElementById('bt-months');
+      grid.innerHTML = '';
+      BT_MONTHS.forEach((m, i) => {
+        const el = document.createElement('div');
+        el.className = 'bt-month' + (m.peak ? ' peak' : '');
+        el.dataset.idx = i;
+        el.innerHTML = '<div class="bt-mname">' + m.name + '</div><div class="bt-tag">' + m.tag + '</div>';
+        el.addEventListener('click', () => {
+          if (btSelected.has(i)) btSelected.delete(i); else btSelected.add(i);
+          el.classList.toggle('sel', btSelected.has(i));
+          updateBtSummary();
+        });
+        grid.appendChild(el);
+      });
+    }
+
+    function updateBtSummary() {
+      const sum = document.getElementById('bt-summary');
+      if (btSelected.size === 0) { sum.classList.remove('show'); sum.textContent = ''; return; }
+      const names = [...btSelected].sort((a, b) => a - b).map(i => BT_MONTHS[i].name);
+      sum.classList.add('show');
+      sum.innerHTML = '&#128204; You\'re flexible around <strong>' + names.join(', ') + '</strong>. Our team will advise the best dates within your preferred months.';
+    }
+
+    function toggleBestTime() {
+      btActive = !btActive;
+      const panel = document.getElementById('besttime-panel');
+      const btn = document.getElementById('btn-besttime');
+      const calSec = document.getElementById('cal-section');
+      const pillsRow = document.getElementById('date-pills-row');
+      if (btActive) {
+        panel.classList.add('visible');
+        btn.classList.add('active');
+        document.getElementById('bt-btn-txt').textContent = 'I know my dates — let me pick them';
+        calSec.style.opacity = '0.3';
+        calSec.style.pointerEvents = 'none';
+        pillsRow.style.opacity = '0.3';
+        sd = null; ed = null; picking = false; upPills();
+      } else {
+        panel.classList.remove('visible');
+        btn.classList.remove('active');
+        document.getElementById('bt-btn-txt').textContent = 'Tell me when is the best time to travel';
+        calSec.style.opacity = '1';
+        calSec.style.pointerEvents = '';
+        pillsRow.style.opacity = '1';
+        btSelected.clear();
+        document.querySelectorAll('.bt-month').forEach(el => el.classList.remove('sel'));
+        updateBtSummary();
+      }
+    }
+
+    buildBtMonths();
+    // ─────────────────────────────────────────────────
+
+    async function doSubmit() {
+      const name = document.getElementById('fname').value.trim();
+      const email = document.getElementById('femail').value.trim();
+      if (!name || !email) { alert('Please enter your name and email.'); return; }
+      if (!cMethod) { alert('Please select a contact method.'); return; }
+
+      // Must have either specific dates OR best-time month selections
+      if (!btActive && (!sd || !ed)) { alert('Please select your travel dates, or use "Tell me the best time to travel" to pick preferred months.'); return; }
+      if (btActive && btSelected.size === 0) { alert('Please select at least one preferred month, or switch back to pick exact dates.'); return; }
+
+      const dest = getDestinationString();
+
+      // Build date info
+      let arrivalStr, departureStr, durationStr;
+      if (btActive) {
+        const names = [...btSelected].sort((a, b) => a - b).map(i => BT_MONTHS[i].name);
+        arrivalStr = 'Flexible — prefers: ' + names.join(', ');
+        departureStr = 'To be advised';
+        durationStr = 'To be advised';
+      } else {
+        const n = nts(sd, ed);
+        arrivalStr = dfmt(sd);
+        departureStr = dfmt(ed);
+        durationStr = n + ' night' + (n !== 1 ? 's' : '');
+      }
+
+      const budget = document.getElementById('budget').value || 'Not specified';
+      const hotelLevel = document.querySelector('.hc.sel')?.dataset.val || 'Not specified';
+      const adults = document.getElementById('adults').value;
+      const children = document.getElementById('children').value;
+      const message = document.getElementById('fmsg').value || 'None';
+      const cxval = document.getElementById('cxval').value || '—';
+
+      const btn = document.getElementById('sbtn');
+      const smsg = document.getElementById('smsg');
+      btn.disabled = true; btn.textContent = 'Sending…';
+      smsg.textContent = 'Sending your enquiry to contact@safariasap.com…';
+
+      const params = {
+        to_email: 'angelinoadventures@gmail.com',
+        from_name: name,
+        from_email: email,
+        reply_to: email,
+        destination: dest,
+        arrival: arrivalStr,
+        departure: departureStr,
+        duration: durationStr,
+        adults, children, budget,
+        hotel_level: hotelLevel,
+        contact_method: cMethod,
+        contact_value: cxval,
+        message
+      };
+
+      try {
+        await emailjs.send(EJ_SERVICE, EJ_TEMPLATE, params);
+        smsg.textContent = '';
+      } catch (err) {
+        console.warn('EmailJS:', err);
+        smsg.textContent = 'Heads up: email delivery may have an issue. We still received your details.';
+      }
+      showTY({ name, dest, arrival: arrivalStr, departure: departureStr, duration: durationStr, budget, hotelLevel, adults, children, cMethod });
+    }
+
+    function showTY(d) {
+      document.getElementById('form-page').style.display = 'none';
+      document.getElementById('ty-page').style.display = 'block';
+      document.getElementById('ty-fn').textContent = d.name.split(' ')[0];
+      document.getElementById('ty-cm').textContent = d.cMethod;
+      document.getElementById('ty-tbl').innerHTML =
+        '<div class="ty-tr"><span class="ty-k">Destination</span><span class="ty-v">' + d.dest + '</span></div>' +
+        '<div class="ty-tr"><span class="ty-k">Arrival</span><span class="ty-v">' + d.arrival + '</span></div>' +
+        '<div class="ty-tr"><span class="ty-k">Departure</span><span class="ty-v">' + d.departure + '</span></div>' +
+        '<div class="ty-tr"><span class="ty-k">Duration</span><span class="ty-v">' + d.duration + '</span></div>' +
+        '<div class="ty-tr"><span class="ty-k">Travelers</span><span class="ty-v">' + d.adults + ' adult' + (d.adults > 1 ? 's' : '') + ', ' + d.children + ' child' + (d.children != 1 ? 'ren' : '') + '</span></div>' +
+        '<div class="ty-tr"><span class="ty-k">Budget per person</span><span class="ty-v">' + d.budget + '</span></div>' +
+        '<div class="ty-tr"><span class="ty-k">Hotel / Camp level</span><span class="ty-v">' + d.hotelLevel + '</span></div>' +
+        '<div class="ty-tr"><span class="ty-k">Contact via</span><span class="ty-v">' + d.cMethod + '</span></div>';
+    }
+
+    function resetAll() {
+      document.getElementById('ty-page').style.display = 'none';
+      document.getElementById('form-page').style.display = 'flex';
+      sd = null; ed = null; picking = false; cMethod = '';
+      // Reset best time state
+      if (btActive) toggleBestTime();
+      btSelected.clear();
+      document.querySelectorAll('.bt-month').forEach(el => el.classList.remove('sel'));
+      updateBtSummary();
+      document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+      document.getElementById('s1').classList.add('active');
+      upProg(1);
+      document.getElementById('sbtn').disabled = false;
+      document.getElementById('sbtn').textContent = 'Submit enquiry';
+      document.getElementById('smsg').textContent = '';
+      document.querySelectorAll('.hc').forEach(x => x.classList.remove('sel'));
+      document.getElementById('tc-check').checked = false;
+      // Reset country/area selections
+      COUNTRIES.forEach(c => {
+        destState[c.name].clear();
+        updateCountryRow(c.name);
+        document.querySelectorAll('#ap-' + c.name + ' .area-pill').forEach(p => p.classList.remove('sel'));
+        document.querySelector('.country-row[data-country="' + c.name + '"]')?.classList.remove('open', 'has-sel');
+      });
+      specialSel = false;
+      document.querySelector('.sopt')?.classList.remove('sel');
+      updateSummary();
+    }
+
+    upProg(1);
+  </script>
+</body>
+
+</html>
